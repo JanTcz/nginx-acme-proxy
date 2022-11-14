@@ -1,0 +1,14 @@
+resolver 127.0.0.11 ipv6=off valid=10s;
+
+# HTTP 1.1 support
+proxy_pass         $upstream;
+proxy_http_version 1.1;
+
+proxy_set_header Host $http_host;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $scheme;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-Ssl $scheme;
+proxy_set_header X-Forwarded-Port $server_port;
